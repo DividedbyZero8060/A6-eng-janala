@@ -8,6 +8,11 @@ const loadButtons = () => {
 
  const displayButtons = (dataArray) => {
 
+//     {
+//     "id": 101,
+//     "level_no": 1,
+//     "lessonName": "Basic Vocabulary"
+// }
     const buttonContainer = document.getElementById("btn-container");
     dataArray.forEach(data => {
         const btn = document.createElement("button");
@@ -27,7 +32,47 @@ const loadButtons = () => {
     })
  };
 
+const loadLevel = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/level/${id}`)
+    .then(res => res.json())
+    .then(data => displayLevel(data));
+}
 
+//            <!-- {
+//     "id": 94,
+//     "level": 2,
+//     "word": "Dance",
+//     "meaning": "নৃত্য",
+//     "pronunciation": "ডান্স"
+// } -->
+const displayLevel = (levelArray) => {
+    const cardsContainer = document.getElementById("cards-container");
+    cardsContainer.innerHTML = "";
+    levelArray.data.forEach(card => {
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        cardDiv.classList.add("card-border");
+        cardDiv.classList.add("bg-base-100");
+        cardDiv.classList.add("w-96");
+
+        cardDiv.innerHTML = `
+        <div class="card-body items-center text-center">
+                <h2 class="card-title">${card.word}</h2>
+                <p>Meaning /Pronounciation</p>
+                <h2>${card.meaning} / ${card.pronunciation}</h2>
+                <div class="w-full flex items-center justify-between px-14">
+                <div class="bg-[#BADEFF26]">
+                    <img class="w-6 h-6" src="https://img.icons8.com/?size=160&id=t4ujSfHW9WSb&format=png" alt="">
+                </div>
+                <div class="bg-[#BADEFF26]">
+                    <img class="w-6 h-6" src="https://img.icons8.com/?size=96&id=108790&format=png" alt="">
+                </div>
+                </div>
+            </div>
+        `;
+        cardsContainer.appendChild(cardDiv);
+    });
+};
 
 
 loadButtons();
