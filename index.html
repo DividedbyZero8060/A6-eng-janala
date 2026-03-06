@@ -6,8 +6,33 @@
     <title>English Janala</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <style>
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
-<body>
-    <h1>English Janala</h1>
+
+<body class="font-poppins">
+    <!-- nav section -->
+     <section id="nav-section" class="bg-[#BADEFF26] py-4 px-8 flex items-center justify-between">
+        <div class="flex bg-white">
+            <h1 class="text-xl">English</h1>
+            <img class="w-8" src="assets/logo.png" alt="">
+            <h1 class="text-xl">জানালা</h1>
+        </div>
+        <div class="flex gap-4">
+            <button class="btn border-[#422AD5] text-[#422AD5]"><img src="assets/fa-circle-question.png" alt=""> FAQ</button>
+
+            <button class="btn border-[#422AD5] text-[#422AD5]"><img src="assets/fa-book-open.png" alt=""> Learn</button>
+            <button class="btn border-[#422AD5] text-[#422AD5]"><img src="assets/fa-arrow-right-from-bracket.png" alt=""> Logout</button>
+        </div>
+     </section>
+
+
+    <script src="scripts/index.js"></script>
 </body>
 </html>
