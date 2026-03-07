@@ -48,6 +48,16 @@ const loadLevel = (id) => {
 const displayLevel = (levelArray) => {
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML = "";
+    if(levelArray.data.length == 0) {
+        cardsContainer.innerHTML = `
+        <div class="bg-[#F8F8F8] col-span-1 md:col-span-2 lg:col-span-3 p-8">
+                <img class="mx-auto" src="assets/alert-error.png" alt="">
+                <p class="text-center mt-4">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                <h1 class="text-2xl font-bold text-center mt-4">নেক্সট Lesson এ যান</h1>
+            </div>
+        `;
+        return;
+    }
     levelArray.data.forEach(card => {
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("card");
