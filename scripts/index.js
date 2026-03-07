@@ -1,3 +1,19 @@
+const hideSections = () => {
+    document.getElementById("nav-section").classList.add("hidden");
+    document.getElementById("cards-section").classList.add("hidden");
+    document.getElementById("faq").classList.add("hidden");
+
+}
+
+const showSections = () => {
+    loadButtons();
+    document.getElementById("hero-section").classList.add("hidden");
+    document.getElementById("nav-section").classList.remove("hidden");
+    document.getElementById("cards-section").classList.remove("hidden");
+    document.getElementById("faq").classList.remove("hidden");
+    
+
+}
 
 
 const loadButtons = () => {
@@ -154,4 +170,18 @@ const displayWordDetails = (word) => {
     const synonymContainer = getSynonyms(word.synonyms);
     modalDetails.appendChild(synonymContainer);
 }
-loadButtons();
+
+
+document.getElementById("login-btn").addEventListener("click",(event) => {
+    event.preventDefault();
+
+    const password = document.getElementById("form-password").value;
+
+    if (password === "123456") {
+        alert("Login successful!");
+        showSections();
+    } else {
+        alert("Wrong password!");
+    }
+});
+hideSections();
