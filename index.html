@@ -60,7 +60,7 @@
         <div id="btn-container" class=" flex gap-2 items-center justify-center my-4">
 
         </div>
-        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="bg-[#F8F8F8] col-span-1 md:col-span-2 lg:col-span-3 p-8">
                 <img class="mx-auto" src="assets/alert-error.png" alt="">
                 <p class="text-center mt-4">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
@@ -68,6 +68,21 @@
             </div>
         </div>
      </section>
+     <!-- Open the modal using ID.showModal() method -->
+        <button class="btn" onclick="word_details.showModal()">open modal</button>
+        <dialog id="word_details" class="modal">
+        <div class="modal-box">
+            <div id="modal_details">
+                
+            </div>
+            <div class="modal-action justify-start" >
+            <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn bg-[#422AD5] text-white mt-4">Complete Learning</button>
+            </form>
+            </div>
+        </div>
+        </dialog>
     <script src="scripts/index.js"></script>
 </body>
 </html>

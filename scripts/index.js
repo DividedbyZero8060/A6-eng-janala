@@ -66,13 +66,13 @@ const displayLevel = (levelArray) => {
         cardDiv.classList.add("w-96");
 
         cardDiv.innerHTML = `
-        <div class="card-body items-center text-center">
+        <div class="card-body items-center text-center bg-gray-100 rounded-lg mx-8">
                 <h2 class="card-title">${card.word}</h2>
                 <p>Meaning /Pronounciation</p>
-                <h2>${card.meaning} / ${card.pronunciation}</h2>
-                <div class="w-full flex items-center justify-between px-14">
+                <h2>${card.meaning != null? card.meaning : "অর্থ নেই"} / ${card.pronunciation != null? card.pronunciation: "উচ্চারণ নেই"}</h2>
+                <div class="w-full flex items-center justify-between px-4">
                 <div class="bg-[#BADEFF26]">
-                    <img class="w-6 h-6" src="https://img.icons8.com/?size=160&id=t4ujSfHW9WSb&format=png" alt="">
+                    <img onclick="loadWordDetails(${card.id})" class="w-6 h-6" src="https://img.icons8.com/?size=160&id=t4ujSfHW9WSb&format=png" alt="">
                 </div>
                 <div class="bg-[#BADEFF26]">
                     <img class="w-6 h-6" src="https://img.icons8.com/?size=96&id=108790&format=png" alt="">
@@ -84,5 +84,74 @@ const displayLevel = (levelArray) => {
     });
 };
 
+const loadWordDetails = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/word/${id}`)
+    .then(res => res.json())
+    .then(data => displayWordDetails(data.data))
+}
 
+// {
+//     "word": "Eager",
+//     "meaning": "আগ্রহী",
+//     "pronunciation": "ইগার",
+//     "level": 1,
+//     "sentence": "The kids were eager to open their gifts.",
+//     "points": 1,
+//     "partsOfSpeech": "adjective",
+//     "synonyms": [
+//         "enthusiastic",
+//         "excited",
+//         "keen"
+//     ],
+//     "id": 5
+// }
+
+const getSynonyms = (arr) => {
+
+    const div = document.createElement("div");
+    div.classList.add("flex");
+    div.classList.add("gap-2");
+    div.classList.add("mt-3");
+
+    if(arr.length == 0) {
+        div.innerHTML=`
+        <p>No Synonyms Found</p>
+        `;
+        return div;
+    }
+
+    for(let word of arr) {
+       const b =  document.createElement("button");
+       b.classList.add("bg-[#BADEFF26]");
+       b.classList.add("p-3");
+       b.classList.add("border-black");
+       b.innerText = word;
+       div.appendChild(b);
+    }
+
+    return div;
+
+};
+const displayWordDetails = (word) => {
+    console.log(word);
+    document.getElementById("word_details").showModal();
+    const modalDetails = document.getElementById("modal_details");
+    modalDetails.innerHTML = `
+            <h1 class="text-2xl font-bold">${word.word}(<img class="w-6 h-6 inline" src="https://img.icons8.com/?size=100&id=9622&format=png" alt="">: ${word.pronunciation}) </h1>
+
+            <p class="py-4 mt-3 font-semibold">Meaning</p>
+            <p>${word.meaning != null? word.meaning : "অর্থ নেই"}</p>
+            <p class="mt-3 font-semibold">
+                Example
+            </p>
+            <p class="mt-3">
+                ${word.sentence}
+            </p>
+            <p class="mt-3 font-semibold">
+                সমার্থক শব্দ গুলো
+            </p>
+    `;
+    const synonymContainer = getSynonyms(word.synonyms);
+    modalDetails.appendChild(synonymContainer);
+}
 loadButtons();
