@@ -1,16 +1,17 @@
 
-
-
 const hideSections = () => {
     document.getElementById("nav-section").classList.add("hidden");
     document.getElementById("cards-section").classList.add("hidden");
     document.getElementById("faq").classList.add("hidden");
+    document.getElementById("hero-section").classList.add("block");
+    document.getElementById("hero-section").classList.remove("hidden");
 
 }
 
 const showSections = () => {
     
     document.getElementById("hero-section").classList.add("hidden");
+    document.getElementById("hero-section").classList.remove("block");
     document.getElementById("nav-section").classList.remove("hidden");
     document.getElementById("cards-section").classList.remove("hidden");
     loadButtons();
@@ -28,11 +29,6 @@ const loadButtons = () => {
 
  const displayButtons = (dataArray) => {
 
-//     {
-//     "id": 101,
-//     "level_no": 1,
-//     "lessonName": "Basic Vocabulary"
-// }
     const buttonContainer = document.getElementById("btn-container");
     dataArray.forEach(data => {
         const btn = document.createElement("button");
@@ -58,13 +54,6 @@ const loadLevel = (id) => {
     .then(data => displayLevel(data));
 }
 
-//            <!-- {
-//     "id": 94,
-//     "level": 2,
-//     "word": "Dance",
-//     "meaning": "নৃত্য",
-//     "pronunciation": "ডান্স"
-// } -->
 const displayLevel = (levelArray) => {
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML = "";
@@ -110,21 +99,6 @@ const loadWordDetails = (id) => {
     .then(data => displayWordDetails(data.data))
 }
 
-// {
-//     "word": "Eager",
-//     "meaning": "আগ্রহী",
-//     "pronunciation": "ইগার",
-//     "level": 1,
-//     "sentence": "The kids were eager to open their gifts.",
-//     "points": 1,
-//     "partsOfSpeech": "adjective",
-//     "synonyms": [
-//         "enthusiastic",
-//         "excited",
-//         "keen"
-//     ],
-//     "id": 5
-// }
 
 const getSynonyms = (arr) => {
 
@@ -202,4 +176,33 @@ document.getElementById("login-btn").addEventListener("click",(event) => {
         });
     }
 });
+
+document.getElementById("logout-btn").addEventListener("click", (event) => {
+    event.preventDefault();
+
+    hideSections();
+});
+
+document.getElementById("learn-btn").addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const element = document.getElementById("cards-section");
+
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+
+document.getElementById("faq-btn").addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const element = document.getElementById("faq");
+
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+
 hideSections();
