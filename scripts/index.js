@@ -66,7 +66,7 @@ const displayLevel = (levelArray) => {
         cardDiv.classList.add("w-96");
 
         cardDiv.innerHTML = `
-        <div class="card-body items-center text-center bg-gray-100 rounded-lg mx-8">
+        <div class="card-body items-center text-center bg-gray-50 rounded-lg mx-8">
                 <h2 class="card-title">${card.word}</h2>
                 <p>Meaning /Pronounciation</p>
                 <h2>${card.meaning != null? card.meaning : "অর্থ নেই"} / ${card.pronunciation != null? card.pronunciation: "উচ্চারণ নেই"}</h2>

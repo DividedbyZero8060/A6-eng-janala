@@ -68,8 +68,7 @@
             </div>
         </div>
      </section>
-     <!-- Open the modal using ID.showModal() method -->
-        <button class="btn" onclick="word_details.showModal()">open modal</button>
+        <!-- dialog -->
         <dialog id="word_details" class="modal">
         <div class="modal-box">
             <div id="modal_details">
@@ -83,6 +82,40 @@
             </div>
         </div>
         </dialog>
+    
+        <section id="faq" class="mt-8 p-12">
+            <h1 class=" text-2xl text-center font-semibold mb-4"><span class="text-blue-400">Frequently</span> Asked Questions</h1>
+            <!-- 1 -->
+            <div class="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
+            <input type="radio" name="my-accordion-2" checked="checked" />
+            <div class="collapse-title font-semibold">The difference between var, let, and const?</div>
+            <div class="collapse-content text-sm">"var" keyword allows declared variables to be accessed in multiple scopes, including global scope. "let" keyword allows the variable to only be accessed in the declared scope but it can be changed indefinitely in the declared scope. "const" keyword makes sure the variable can store only one value during it's lifetime.</div>
+            </div>
+            <!-- 2 -->
+             <div class="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
+            <input type="radio" name="my-accordion-2" checked="checked" />
+            <div class="collapse-title font-semibold">The difference between map(), forEach(), and filter()? </div>
+            <div class="collapse-content text-sm">The map method transforms an array by applying a function to all of the elements and building a new array from the returned values. The forEach method iterates over each element of an array, just like a loop but does not do anything by default. The filter method filters out an array by applying a logic against each element of the array and building a new array from the returned elements</div>
+            </div>
+            <!-- 3 -->
+             <div class="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
+            <input type="radio" name="my-accordion-2" checked="checked" />
+            <div class="collapse-title font-semibold">Explain arrow functions and how they are different from regular functions?</div>
+            <div class="collapse-content text-sm">In arrow functions, we store the function in a variable. The parameters are stored in a parenthesis and after it comes an arrow consisting of an equal sign and a greater than symbol. After that follows a curly braced block in which all the computation goes. Arrow function expresses functionalities in a less verbose way</div>
+            </div>
+            <!-- 4 -->
+             <div class="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
+            <input type="radio" name="my-accordion-2" checked="checked" />
+            <div class="collapse-title font-semibold">How JavaScript Promises work?</div>
+            <div class="collapse-content text-sm">A promise in JS is an asynchronous action that may complete at some point and produce a value. It is able to notify anyone who is interested when the value is available. Promise can be returned from a fetch function or by the resolve method of Promise object. The result of promise can be accessed using it's then method. Then method registers a callback function to be called when the promise is resolved.</div>
+            </div>
+            <!-- 5 -->
+             <div class="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
+            <input type="radio" name="my-accordion-2" checked="checked" />
+            <div class="collapse-title font-semibold"> How closures work in JavaScript?</div>
+            <div class="collapse-content text-sm">A function that references binding from local scope around it is called a closure. When called, function body sees the environment in which it was created, not the environment in which it was called. This mechanism allows variables defined in function to be accessed later.</div>
+            </div>
+        </section>
     <script src="scripts/index.js"></script>
 </body>
 </html>
