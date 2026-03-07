@@ -84,7 +84,7 @@ const displayLevel = (levelArray) => {
                     <img onclick="loadWordDetails(${card.id})" class="w-6 h-6" src="https://img.icons8.com/?size=160&id=t4ujSfHW9WSb&format=png" alt="">
                 </div>
                 <div class="bg-[#BADEFF26]">
-                    <img class="w-6 h-6" src="https://img.icons8.com/?size=96&id=108790&format=png" alt="">
+                    <img onclick="pronounceWord('${card.word}')" class="w-6 h-6" src="https://img.icons8.com/?size=96&id=108790&format=png" alt="">
                 </div>
                 </div>
             </div>
@@ -204,5 +204,13 @@ document.getElementById("faq-btn").addEventListener("click", (event) => {
         block: "start"
     });
 });
+
+
+ function pronounceWord(word) {
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = 'en-EN';
+      window.speechSynthesis.speak(utterance);
+    }
+
 
 hideSections();
