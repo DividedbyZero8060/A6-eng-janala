@@ -1,3 +1,6 @@
+
+
+
 const hideSections = () => {
     document.getElementById("nav-section").classList.add("hidden");
     document.getElementById("cards-section").classList.add("hidden");
@@ -6,10 +9,11 @@ const hideSections = () => {
 }
 
 const showSections = () => {
-    loadButtons();
+    
     document.getElementById("hero-section").classList.add("hidden");
     document.getElementById("nav-section").classList.remove("hidden");
     document.getElementById("cards-section").classList.remove("hidden");
+    loadButtons();
     document.getElementById("faq").classList.remove("hidden");
     
 
@@ -66,7 +70,7 @@ const displayLevel = (levelArray) => {
     cardsContainer.innerHTML = "";
     if(levelArray.data.length == 0) {
         cardsContainer.innerHTML = `
-        <div class="bg-[#F8F8F8] col-span-1 md:col-span-2 lg:col-span-3 p-8">
+        <div class="bg-[#F8F8F8]  col-span-1 md:col-span-2 lg:col-span-3 p-8">
                 <img class="mx-auto" src="assets/alert-error.png" alt="">
                 <p class="text-center mt-4">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
                 <h1 class="text-2xl font-bold text-center mt-4">নেক্সট Lesson এ যান</h1>
@@ -82,7 +86,7 @@ const displayLevel = (levelArray) => {
         cardDiv.classList.add("w-96");
 
         cardDiv.innerHTML = `
-        <div class="card-body items-center text-center bg-gray-50 rounded-lg mx-8">
+        <div class="card-body items-center text-center bg-gray-50 rounded-lg mx-8 hover:bg-[#BADEFF26]">
                 <h2 class="card-title">${card.word}</h2>
                 <p>Meaning /Pronounciation</p>
                 <h2>${card.meaning != null? card.meaning : "অর্থ নেই"} / ${card.pronunciation != null? card.pronunciation: "উচ্চারণ নেই"}</h2>
@@ -178,10 +182,24 @@ document.getElementById("login-btn").addEventListener("click",(event) => {
     const password = document.getElementById("form-password").value;
 
     if (password === "123456") {
-        alert("Login successful!");
-        showSections();
+        Swal.fire({
+        title: 'Welcome!',
+        text: 'Let\'s learn something new today!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#422AD5"
+        }).then(() => {
+            showSections();
+            document.getElementById("form-password").value = "";
+        });
     } else {
-        alert("Wrong password!");
+        Swal.fire({
+             title: "Oops!",
+            text: "Wrong password! Please try again.",
+            icon: "error",
+            confirmButtonText: "Try Again",
+            confirmButtonColor: "#EF4444"
+        });
     }
 });
 hideSections();
