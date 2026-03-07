@@ -72,7 +72,9 @@ const displayLevel = (levelArray) => {
         cardDiv.classList.add("card");
         cardDiv.classList.add("card-border");
         cardDiv.classList.add("bg-base-100");
-        cardDiv.classList.add("w-96");
+        cardDiv.classList.add("w-full");
+        cardDiv.classList.add("max-w-sm");
+        cardDiv.classList.add("mx-auto");
 
         cardDiv.innerHTML = `
         <div class="card-body items-center text-center bg-gray-50 rounded-lg mx-8 hover:bg-[#BADEFF26]">
@@ -104,6 +106,7 @@ const getSynonyms = (arr) => {
 
     const div = document.createElement("div");
     div.classList.add("flex");
+    div.classList.add("flex-wrap");
     div.classList.add("gap-2");
     div.classList.add("mt-3");
 
